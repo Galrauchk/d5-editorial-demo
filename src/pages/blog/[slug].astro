@@ -1,0 +1,30 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articles, getArticleBySlug } from '../../data/articles';
+
+export async function getStaticPaths() {
+  return articles.map(article => ({
+    params: { slug: article.slug },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+---
+
+<ArticleLayout
+  title={article.title}
+  description={article.excerpt}
+  image={article.image}
+  author={article.author}
+  authorSlug={article.authorSlug}
+  date={article.date}
+  readTime={article.readTime}
+  category={article.category}
+  categorySlug={article.categorySlug}
+  tags={article.tags}
+  relatedSlugs={article.relatedSlugs}
+  slug={article.slug}
+>
+  <Fragment set:html={article.content} />
+</ArticleLayout>

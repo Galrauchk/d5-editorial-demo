@@ -1,0 +1,88 @@
+---
+const navItems = [
+  {
+    label: 'Services',
+    href: '/services/seo',
+    children: [
+      { label: 'Référencement SEO', href: '/services/seo' },
+      { label: 'Content Marketing', href: '/services/content-marketing' },
+      { label: 'Google Ads', href: '/services/google-ads' },
+      { label: 'Audit Digital', href: '/services/audit-digital' },
+      { label: 'Formation SEO', href: '/services/formation-seo' },
+      { label: 'Conseil Stratégique', href: '/services/conseil-strategique' },
+    ]
+  },
+  {
+    label: 'Blog',
+    href: '/blog',
+    children: [
+      { label: 'Tous les articles', href: '/blog' },
+      { label: 'SEO', href: '/blog/categorie/seo' },
+      { label: 'Content Marketing', href: '/blog/categorie/content-marketing' },
+      { label: 'Google Ads', href: '/blog/categorie/google-ads' },
+      { label: 'Analytics', href: '/blog/categorie/analytics' },
+    ]
+  },
+  { label: 'Cas clients', href: '/cas-clients' },
+  { label: 'Ressources', href: '/ressources' },
+  { label: 'Glossaire', href: '/glossaire' },
+  { label: 'À propos', href: '/a-propos' },
+];
+---
+
+<header class="site-header">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <span>📍 Montpellier, France</span>
+        <span>📞 04 67 00 00 00</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span>+200 clients accompagnés</span>
+        <span style="color: var(--cyan);">★ ★ ★ ★ ★ 4.9/5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Nav -->
+  <nav style="padding: 0.875rem 0;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;">
+      <!-- Logo -->
+      <a href="/" style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0;">
+        <div style="width: 2rem; height: 2rem; background: var(--gradient-cta); border-radius: 0.375rem; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: var(--font-serif); font-weight: 700; color: var(--navy); font-size: 1rem;">S</span>
+        </div>
+        <span style="font-family: var(--font-serif); font-weight: 700; color: #fff; font-size: 1.25rem; letter-spacing: -0.01em;">Stratègere</span>
+      </a>
+
+      <!-- Nav Links -->
+      <ul style="display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0;" id="mainNav">
+        {navItems.map(item => (
+          <li class={item.children ? 'nav-item' : ''} style="position: relative;">
+            {item.children ? (
+              <>
+                <a href={item.href} class="nav-link">
+                  {item.label} <span style="font-size: 0.65rem; opacity: 0.7;">▼</span>
+                </a>
+                <div class="dropdown-menu">
+                  {item.children.map(child => (
+                    <a href={child.href} class="dropdown-link">{child.label}</a>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <a href={item.href} class="nav-link">{item.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA -->
+      <div style="display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;">
+        <a href="/contact" class="btn-secondary" style="font-size: 0.8125rem; padding: 0.5rem 1rem;">Contact</a>
+        <a href="/audit-gratuit" class="btn-primary" style="font-size: 0.8125rem; padding: 0.5rem 1rem;">Audit gratuit</a>
+      </div>
+    </div>
+  </nav>
+</header>

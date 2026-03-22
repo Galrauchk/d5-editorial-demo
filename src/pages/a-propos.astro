@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { teamMembers } from '../data/team';
+---
+
+<BaseLayout
+  title="À Propos de Stratègere | Agence SEO Montpellier depuis 2012"
+  description="Stratègere, agence SEO et content marketing fondée en 2012 à Montpellier. Découvrez notre histoire, nos valeurs et l'équipe d'experts qui vous accompagne."
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">À propos</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Notre histoire</div>
+      <h1 class="section-title-white" style="margin-bottom: 1rem; max-width: 680px;">Une agence SEO fondée sur la conviction que le marketing digital doit être rentable</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 600px; line-height: 1.6;">
+        Fondée en 2012 par Marie Dubois, ancienne de Google France, Stratègere est née d'une frustration : les agences SEO promettaient des positions sans penser au ROI. Nous avons voulu changer ça.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+        <div class="stat-item"><span class="stat-number">2012</span><div class="stat-label">Année de fondation</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">+200</span><div class="stat-label">Clients accompagnés</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">4</span><div class="stat-label">Experts dans l'équipe</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">4.9★</span><div class="stat-label">Note Google moyenne</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-bottom: 5rem;">
+        <div>
+          <div class="section-label" style="margin-bottom: 0.75rem;">Notre histoire</div>
+          <h2 class="section-title" style="margin-bottom: 1.5rem;">De Google France à l'entrepreneuriat</h2>
+          <p style="color: #374151; font-size: 1.0625rem; line-height: 1.8; margin-bottom: 1.25rem;">
+            Marie Dubois a passé 5 ans chez Google France, où elle a vu de l'intérieur comment fonctionne le moteur de recherche et comment les algorithmes évoluent. En 2012, elle décide de créer Stratègere pour mettre cette connaissance au service des entreprises.
+          </p>
+          <p style="color: #374151; font-size: 1.0625rem; line-height: 1.8; margin-bottom: 1.25rem;">
+            L'agence a grandi organiquement, en travaillant uniquement par recommandation pendant ses 3 premières années. Aujourd'hui, nous accompagnons plus de 200 clients dans tous les secteurs : e-commerce, services, santé, BTP, immobilier...
+          </p>
+          <p style="color: #374151; font-size: 1.0625rem; line-height: 1.8;">
+            Notre philosophie n'a pas changé : le SEO doit générer des résultats business mesurables, pas juste du trafic.
+          </p>
+        </div>
+        <div style="background: var(--gradient-hero); border-radius: var(--radius-lg); padding: 3rem; border: 1px solid rgba(0,229,255,0.2);">
+          <h3 style="font-family: var(--font-serif); color: #fff; font-size: 1.5rem; margin-bottom: 2rem;">Nos valeurs</h3>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            {[
+              { icon: '🎯', title: 'ROI avant tout', desc: 'Chaque action SEO est évaluée à l\'aune de son impact sur votre chiffre d\'affaires.' },
+              { icon: '🔬', title: 'Data-driven', desc: 'Nos décisions sont basées sur des données réelles, pas des intuitions.' },
+              { icon: '🤝', title: 'Transparence totale', desc: 'Reporting mensuel complet. Vous savez exactement ce que nous faisons et pourquoi.' },
+              { icon: '📈', title: 'Long terme', desc: 'Nous construisons des fondations durables. Pas de tricks black hat.' },
+            ].map(v => (
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="font-size: 1.5rem; flex-shrink: 0;">{v.icon}</div>
+                <div>
+                  <div style="font-weight: 700; color: #fff; margin-bottom: 0.25rem;">{v.title}</div>
+                  <div style="color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.5;">{v.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3rem;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">L'équipe</div>
+        <h2 class="section-title">Des experts, pas des commerciaux</h2>
+        <p style="color: #6b7280; margin-top: 1rem; font-size: 1.0625rem;">Chaque membre de notre équipe est un praticien. Ils font du SEO au quotidien, pas seulement en réunion client.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+        {teamMembers.map(member => (
+          <div class="team-card">
+            <img src={member.image} alt={member.name} width="80" height="80" class="team-avatar" />
+            <div class="team-name">{member.name}</div>
+            <div class="team-role">{member.role}</div>
+            <p style="color: #6b7280; font-size: 0.875rem; line-height: 1.5; margin: 0.75rem 0 1rem;">{member.bio}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.375rem; justify-content: center;">
+              {member.expertise.map(e => (
+                <span class="tag-pill">{e}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Envie de travailler avec nous ?</h2>
+      <p>Découvrez si nous sommes le bon partenaire pour votre croissance digitale.</p>
+      <a href="/contact" class="btn-outline-dark">Nous contacter</a>
+    </div>
+  </div>
+</BaseLayout>

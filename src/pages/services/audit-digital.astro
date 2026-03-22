@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Audit SEO & Digital Complet | Stratègere Montpellier"
+  description="Audit SEO technique complet en 7 étapes. Analyse technique, contenu, backlinks, concurrents et plan d'action chiffré. Livraison en 10 jours ouvrés."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.5);">Services</span>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Audit Digital</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Audit Digital</div>
+      <h1 class="section-title-white" style="margin-bottom: 1.25rem; max-width: 700px;">L'audit SEO qui révèle ce que Google ne vous dit pas</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6; margin-bottom: 2rem;">
+        Un audit SEO complet en 7 étapes pour identifier tous les freins cachés et les opportunités inexploitées. Plan d'action prioritaire inclus.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="/contact" class="btn-primary">Commander un audit →</a>
+        <a href="/audit-gratuit" class="btn-secondary">Audit express gratuit</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Notre méthodologie</div>
+        <h2 class="section-title">7 étapes pour un audit SEO exhaustif</h2>
+        <p style="color: #6b7280; margin-top: 1rem;">Lire notre <a href="/blog/audit-seo-complet-guide" style="color: var(--blue);">guide complet de l'audit SEO →</a></p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+        {[
+          { n: '01', title: 'Préparation & collecte des accès', desc: 'GSC, GA4, Screaming Frog, Ahrefs. Baseline des métriques actuelles.' },
+          { n: '02', title: 'Audit technique SEO', desc: 'Crawl complet, indexation, redirections, Core Web Vitals, HTTPS, mobile-first.' },
+          { n: '03', title: 'Audit de contenu', desc: 'Contenu dupliqué, thin content, cannibalisation, opportunités de mise à jour.' },
+          { n: '04', title: 'Audit on-page', desc: 'Balises title, meta descriptions, H1-H6, URLs, images. Page par page.' },
+          { n: '05', title: 'Audit du profil de liens', desc: 'Backlinks entrants, ancres de liens, liens toxiques, opportunités link reclamation.' },
+          { n: '06', title: 'Analyse concurrentielle', desc: 'Top 5 concurrents : mots-clés, contenu, backlinks, performances techniques.' },
+          { n: '07', title: 'Plan d\'action prioritaire', desc: 'Quick wins + roadmap 6-12 mois avec impact estimé et effort requis pour chaque action.' },
+        ].map(step => (
+          <div style="display: flex; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: var(--radius-lg); border: 1px solid #f0f0f0; align-items: flex-start;">
+            <div style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--cyan); opacity: 0.4; flex-shrink: 0; line-height: 1; min-width: 3rem;">{step.n}</div>
+            <div>
+              <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.125rem; margin-bottom: 0.375rem;">{step.title}</h3>
+              <p style="color: #6b7280; font-size: 0.9375rem; margin: 0;">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Votre site mérite un vrai diagnostic</h2>
+      <p>Audit SEO complet livré en 10 jours ouvrés. Rapport de 60+ pages + session de restitution incluse.</p>
+      <a href="/contact" class="btn-outline-dark">Commander l'audit</a>
+    </div>
+  </div>
+</BaseLayout>

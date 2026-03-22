@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { glossaryTerms, getTermsByLetter } from '../../data/glossary';
+
+const termsByLetter = getTermsByLetter();
+const sortedLetters = Object.keys(termsByLetter).sort();
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Glossaire SEO & Marketing Digital",
+  "description": "Dictionnaire complet des termes SEO et marketing digital. 30+ définitions claires et pratiques.",
+  "url": "https://d5-editorial-demo.netlify.app/glossaire"
+};
+---
+
+<BaseLayout
+  title="Glossaire SEO & Marketing Digital | Dictionnaire des termes | Stratègere"
+  description="30+ définitions claires des termes SEO : backlink, CTR, SERP, Core Web Vitals, E-E-A-T... Le dictionnaire SEO de référence en français."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Glossaire</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Dictionnaire SEO</div>
+      <h1 class="section-title-white" style="margin-bottom: 1rem;">Glossaire SEO & Marketing Digital</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6;">
+        {glossaryTerms.length} termes SEO définis clairement, avec des exemples concrets et des liens vers nos guides approfondis.
+      </p>
+    </div>
+  </section>
+
+  <!-- Alphabet navigation -->
+  <section style="padding: 1.5rem 0; background: #fff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 70px; z-index: 10;">
+    <div class="container">
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+        <span style="font-size: 0.8125rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.5rem;">Aller à :</span>
+        {sortedLetters.map(letter => (
+          <a
+            href={`#lettre-${letter}`}
+            style="width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #e5e7eb; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 700; color: var(--navy); text-decoration: none; transition: all 0.2s;"
+            onmouseover="this.style.background='var(--navy)'; this.style.color='#fff'; this.style.borderColor='var(--navy)'"
+            onmouseout="this.style.background=''; this.style.color='var(--navy)'; this.style.borderColor='#e5e7eb'"
+          >
+            {letter}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Glossary Content -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; gap: 4rem;">
+        {sortedLetters.map(letter => (
+          <div id={`lettre-${letter}`}>
+            <div class="glossary-letter-anchor">{letter}</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+              {termsByLetter[letter].map(term => (
+                <a href={`/glossaire/${term.slug}`} class="glossary-term-card" style="text-decoration: none;">
+                  <div class="glossary-term-name">{term.term}</div>
+                  <div class="glossary-term-short">{term.shortDef}</div>
+                  <div style="margin-top: 0.75rem; font-size: 0.8125rem; color: var(--blue); font-weight: 600;">Lire la définition →</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 4rem 0; background: #f9fafb;">
+    <div class="container" style="max-width: 680px; text-align: center;">
+      <h2 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.75rem; margin-bottom: 1rem;">Un terme manque dans notre glossaire ?</h2>
+      <p style="color: #6b7280; margin-bottom: 2rem;">Suggérez un terme SEO et notre équipe l'ajoutera dans les plus brefs délais.</p>
+      <a href="/contact" class="btn-primary">Suggérer un terme</a>
+    </div>
+  </section>
+</BaseLayout>

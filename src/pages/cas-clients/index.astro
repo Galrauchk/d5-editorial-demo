@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { caseStudies } from '../../data/caseStudies';
+---
+
+<BaseLayout
+  title="Cas Clients & Études de Cas SEO | Résultats Concrets | Stratègere"
+  description="Découvrez comment Stratègere a aidé ses clients à multiplier leur trafic organique et leurs leads. Études de cas avec résultats chiffrés."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Cas clients</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Preuves concrètes</div>
+      <h1 class="section-title-white" style="margin-bottom: 1rem;">Résultats clients : chiffres réels, clients réels</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6;">
+        Pas de cas clients fictifs ou de métriques gonflées. Voici ce que nous avons vraiment accompli pour des clients qui nous ont fait confiance.
+      </p>
+    </div>
+  </section>
+
+  <!-- Global stats -->
+  <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+        <div class="stat-item"><span class="stat-number">+200</span><div class="stat-label">Clients accompagnés</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">+340%</span><div class="stat-label">Trafic moyen</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">4.9★</span><div class="stat-label">Satisfaction</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">12 ans</span><div class="stat-label">D'expérience</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case studies grid -->
+  <section style="padding: 5rem 0; background: var(--navy);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem;">
+        {caseStudies.map(cs => (
+          <a href={`/cas-clients/${cs.slug}`} class="case-study-card" style="text-decoration: none;">
+            <div style="aspect-ratio: 16/8; overflow: hidden;">
+              <img src={cs.image} alt={cs.client} width="680" height="340" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
+            </div>
+            <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan);">{cs.sector}</span>
+                <span style="color: rgba(255,255,255,0.3);">·</span>
+                <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">{cs.location}</span>
+                <span style="color: rgba(255,255,255,0.3);">·</span>
+                <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">{cs.duration}</span>
+              </div>
+              <h2 style="font-family: var(--font-serif); color: #fff; font-size: 1.5rem; margin-bottom: 0.75rem;">{cs.client}</h2>
+              <p style="color: rgba(255,255,255,0.6); font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">{cs.challenge.substring(0, 150)}...</p>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem;">
+                {cs.results.map(r => (
+                  <div class="case-metric">
+                    <div class="case-metric-value">{r.metric}</div>
+                    <div class="case-metric-label">{r.description}</div>
+                  </div>
+                ))}
+              </div>
+              <span style="color: var(--cyan); font-size: 0.875rem; font-weight: 600;">Lire l'étude de cas →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--navy); text-align: center; margin-bottom: 3rem;">Ce que disent nos clients</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; background: var(--navy); padding: 3rem; border-radius: var(--radius-lg);">
+        {caseStudies.map(cs => (
+          <div class="testimonial-card">
+            <p class="testimonial-text">"{cs.testimonial.quote}"</p>
+            <div class="testimonial-author">{cs.testimonial.author}</div>
+            <div class="testimonial-role">{cs.testimonial.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Votre success story est la prochaine</h2>
+      <p>Commençons par un audit gratuit de votre visibilité digitale actuelle.</p>
+      <a href="/audit-gratuit" class="btn-outline-dark">Demander mon audit gratuit</a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { articles } from '../../../data/articles';
+
+export async function getStaticPaths() {
+  const categories = [
+    { slug: 'seo', label: 'SEO', description: "Guides et stratégies de référencement naturel : SEO technique, audit, netlinking, SEO local." },
+    { slug: 'content-marketing', label: 'Content Marketing', description: "Stratégie de contenu, calendrier éditorial, copywriting et génération de leads par le contenu." },
+    { slug: 'google-ads', label: 'Google Ads', description: "Optimisation de campagnes Google Ads, Performance Max, Smart Bidding et maximisation du ROI." },
+    { slug: 'analytics', label: 'Analytics', description: "Core Web Vitals, Google Analytics 4, tracking et mesure de performance digitale." },
+    { slug: 'formation', label: 'Formation', description: "Formations SEO et marketing digital pour les équipes." },
+    { slug: 'conseil', label: 'Conseil', description: "Conseil stratégique en marketing digital et croissance." },
+  ];
+
+  return categories.map(cat => ({
+    params: { cat: cat.slug },
+    props: { category: cat }
+  }));
+}
+
+const { category } = Astro.props;
+const categoryArticles = articles.filter(a => a.categorySlug === category.slug);
+
+const categoryColors: Record<string, string> = {
+  seo: 'badge-seo',
+  'content-marketing': 'badge-content',
+  'google-ads': 'badge-ads',
+  analytics: 'badge-analytics',
+  formation: 'badge-formation',
+  conseil: 'badge-conseil'
+};
+const badgeClass = categoryColors[category.slug] || 'badge-seo';
+
+const allCategories = [
+  { label: 'Tout', href: '/blog', slug: 'all' },
+  { label: 'SEO', href: '/blog/categorie/seo', slug: 'seo' },
+  { label: 'Content Marketing', href: '/blog/categorie/content-marketing', slug: 'content-marketing' },
+  { label: 'Google Ads', href: '/blog/categorie/google-ads', slug: 'google-ads' },
+  { label: 'Analytics', href: '/blog/categorie/analytics', slug: 'analytics' },
+];
+---
+
+<BaseLayout
+  title={`${category.label} — Blog SEO | Stratègere`}
+  description={category.description}
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/blog" style="color: rgba(255,255,255,0.5);">Blog</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">{category.label}</span>
+      </nav>
+      <span class={`badge ${badgeClass}`} style="margin-bottom: 1rem; display: inline-block;">{category.label}</span>
+      <h1 class="section-title-white" style="margin-bottom: 1rem;">Articles {category.label}</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.0625rem; max-width: 560px;">{category.description}</p>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section style="padding: 1.5rem 0; border-bottom: 1px solid #f0f0f0; background: #fff;">
+    <div class="container">
+      <div class="category-pills">
+        {allCategories.map(cat => (
+          <a href={cat.href} class={`category-pill ${cat.slug === category.slug ? 'active' : ''}`}>{cat.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      {categoryArticles.length > 0 ? (
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+          {categoryArticles.map(article => (
+            <ArticleCard {...article} />
+          ))}
+        </div>
+      ) : (
+        <div style="text-align: center; padding: 4rem 0; color: #6b7280;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+          <h2 style="font-family: var(--font-serif); color: var(--navy); margin-bottom: 0.75rem;">Articles à venir</h2>
+          <p>Nos experts rédigent actuellement du contenu pour cette catégorie. Revenez bientôt !</p>
+          <a href="/blog" class="btn-primary" style="margin-top: 1.5rem; display: inline-flex;">Voir tous les articles</a>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

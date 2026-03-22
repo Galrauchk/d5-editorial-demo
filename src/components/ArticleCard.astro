@@ -1,0 +1,68 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  categorySlug: string;
+  author: string;
+  date: string;
+  readTime: number;
+  image: string;
+  featured?: boolean;
+}
+
+const { slug, title, excerpt, category, categorySlug, author, date, readTime, image, featured = false } = Astro.props;
+
+const categoryColors: Record<string, string> = {
+  seo: 'badge-seo',
+  'content-marketing': 'badge-content',
+  'google-ads': 'badge-ads',
+  analytics: 'badge-analytics',
+  formation: 'badge-formation',
+  conseil: 'badge-conseil'
+};
+const badgeClass = categoryColors[categorySlug] || 'badge-seo';
+
+const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric'
+});
+---
+
+{featured ? (
+  <a href={`/blog/${slug}`} class="card-featured" style="display: block; text-decoration: none;">
+    <img src={image} alt={title} width="800" height="450" class="card-featured-image" loading="lazy" />
+    <div class="card-featured-overlay">
+      <span class={`badge ${badgeClass}`} style="margin-bottom: 0.75rem; display: inline-block; align-self: flex-start;">{category}</span>
+      <h2 class="card-featured-title">{title}</h2>
+      <p style="color: rgba(255,255,255,0.75); font-size: 0.9375rem; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{excerpt}</p>
+      <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.8125rem; color: rgba(255,255,255,0.6);">
+        <span>{author}</span>
+        <span>·</span>
+        <span>{formattedDate}</span>
+        <span>·</span>
+        <span>{readTime} min</span>
+      </div>
+    </div>
+  </a>
+) : (
+  <a href={`/blog/${slug}`} class="card-article" style="text-decoration: none;">
+    <div class="card-article-image">
+      <img src={image} alt={title} width="400" height="225" loading="lazy" />
+    </div>
+    <div class="card-article-body">
+      <span class={`badge ${badgeClass}`} style="display: inline-block;">{category}</span>
+      <h2 class="card-article-title">{title}</h2>
+      <p class="card-article-excerpt">{excerpt}</p>
+      <div class="card-meta">
+        <span>{author}</span>
+        <span>·</span>
+        <span>{formattedDate}</span>
+        <span>·</span>
+        <span>{readTime} min</span>
+      </div>
+    </div>
+  </a>
+)}

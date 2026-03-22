@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Audit SEO Gratuit",
+  "provider": { "@type": "Organization", "name": "Stratègere" },
+  "description": "Audit SEO express gratuit en 48h. Analyse de votre visibilité, mots-clés et opportunités.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
+};
+---
+
+<BaseLayout
+  title="Audit SEO Gratuit en 48h | Stratègere Montpellier"
+  description="Recevez votre audit SEO gratuit sous 48h. Analyse de votre visibilité organique, principaux freins et opportunités identifiées par nos experts."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section style="background: var(--gradient-hero); padding: 5rem 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -20%; right: -10%; width: 50%; height: 140%; background: radial-gradient(ellipse, rgba(0,229,255,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 480px; gap: 4rem; align-items: center;">
+        <div>
+          <div class="section-label" style="margin-bottom: 1rem;">100% Gratuit — Sans engagement</div>
+          <h1 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); color: #fff; line-height: 1.1; margin-bottom: 1.25rem;">
+            Votre audit SEO gratuit<br /><span class="text-gradient">livré en 48h</span>
+          </h1>
+          <p style="color: rgba(255,255,255,0.75); font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem;">
+            Nos experts analysent votre visibilité sur Google, identifient vos principaux freins et vous livrent un rapport avec les quick wins à exploiter immédiatement.
+          </p>
+
+          <!-- What's included -->
+          <div style="display: flex; flex-direction: column; gap: 0.875rem;">
+            {[
+              'Analyse de votre positionnement actuel sur Google',
+              'Identification des 5 principales erreurs techniques',
+              'Analyse de vos 10 mots-clés avec le plus fort potentiel',
+              'Benchmark vs. vos 3 principaux concurrents',
+              'Plan d\'action prioritaire avec impact estimé',
+              'Session de restitution vidéo de 30 minutes'
+            ].map(item => (
+              <div style="display: flex; align-items: center; gap: 0.875rem;">
+                <div style="width: 1.5rem; height: 1.5rem; background: var(--gradient-cta); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.7rem; font-weight: 700; color: var(--navy);">✓</div>
+                <span style="color: rgba(255,255,255,0.85); font-size: 0.9375rem;">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div style="background: #fff; border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+          <div style="text-align: center; margin-bottom: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+            <h2 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.375rem;">Demander mon audit gratuit</h2>
+            <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">Livraison en 48h ouvrées · Zéro engagement</p>
+          </div>
+
+          <form onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:2rem;\'><div style=\'font-size:3rem;margin-bottom:1rem;\'>🎉</div><h3 style=\'font-family:var(--font-serif);color:var(--navy);\'>Demande reçue !</h3><p style=\'color:#6b7280;\'>Notre équipe vous contacte sous 48h pour démarrer l\'audit.</p></div>'">
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <input type="text" class="form-input" placeholder="Votre prénom *" required style="background: #f9fafb;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <input type="email" class="form-input" placeholder="Email professionnel *" required style="background: #f9fafb;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <input type="url" class="form-input" placeholder="URL de votre site web *" required style="background: #f9fafb;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <select class="form-select" style="background: #f9fafb;">
+                <option value="">Votre secteur d'activité</option>
+                <option>E-commerce</option>
+                <option>Services B2B</option>
+                <option>Santé / Médical</option>
+                <option>BTP / Construction</option>
+                <option>Immobilier</option>
+                <option>Restaurant / Food</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <select class="form-select" style="background: #f9fafb;">
+                <option value="">Votre budget mensuel SEO actuel</option>
+                <option>Pas de budget SEO</option>
+                <option>Moins de 500€/mois</option>
+                <option>500€ à 1 500€/mois</option>
+                <option>1 500€ à 3 000€/mois</option>
+                <option>Plus de 3 000€/mois</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.0625rem; padding: 0.875rem;">
+              Recevoir mon audit gratuit →
+            </button>
+            <p style="text-align: center; font-size: 0.75rem; color: #9ca3af; margin-top: 0.875rem;">
+              En soumettant, vous acceptez d'être recontacté par notre équipe. Pas de spam.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section style="padding: 4rem 0; background: var(--navy-light);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Ils ont commencé par un audit gratuit</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        {[
+          { quote: "L'audit gratuit nous a révélé 3 problèmes techniques critiques que nous avions depuis des mois. En les corrigeant, notre trafic a augmenté de 60% en 6 semaines.", author: "Julien M.", role: "Directeur e-commerce" },
+          { quote: "Je ne m'attendais pas à recevoir un rapport aussi détaillé et personnalisé pour zéro euro. Ça a clairement démontré le niveau d'expertise de l'équipe.", author: "Céline R.", role: "Responsable marketing" },
+          { quote: "L'audit était tellement complet et le plan d'action tellement clair qu'on a décidé de les mandater pour la mise en œuvre. Meilleure décision de l'année.", author: "Patrick D.", role: "Dirigeant PME" },
+        ].map(t => (
+          <div class="testimonial-card">
+            <p class="testimonial-text">"{t.quote}"</p>
+            <div class="testimonial-author">{t.author}</div>
+            <div class="testimonial-role">{t.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding: 4rem 0;">
+    <div class="container" style="max-width: 700px;">
+      <h2 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--navy); text-align: center; margin-bottom: 2.5rem;">Questions sur l'audit gratuit</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        {[
+          { q: "L'audit est vraiment gratuit ?", a: "Oui, 100% gratuit et sans engagement. Nous le proposons parce que nous savons que quand les clients voient la qualité de notre travail, une partie choisit de travailler avec nous. C'est notre meilleure carte de visite." },
+          { q: "Que se passe-t-il après l'audit ?", a: "Vous recevez le rapport complet, puis nous organisons une session vidéo de 30 minutes pour l'expliquer. Si vous souhaitez qu'on mette en œuvre les recommandations, nous vous faisons une proposition commerciale. Sinon, l'audit est à vous, sans obligation." },
+          { q: "Combien de temps prend la restitution ?", a: "Le rapport est livré sous 48 heures ouvrées. La session de restitution est planifiée dans la foulée selon vos disponibilités." },
+          { q: "Pour quels types de sites faites-vous des audits ?", a: "Tous les types : e-commerce, sites vitrines, blogs, sites institutionnels, plateformes SaaS. La seule condition : avoir un site web avec un minimum de 10 pages." },
+        ].map(item => (
+          <div style="background: #f9fafb; border-radius: var(--radius); padding: 1.5rem; border: 1px solid #f0f0f0;">
+            <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.0625rem; margin-bottom: 0.625rem;">{item.q}</h3>
+            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

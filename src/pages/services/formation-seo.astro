@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Formation SEO en Entreprise | Intra & Inter | Stratègere"
+  description="Formations SEO sur-mesure pour vos équipes marketing. Formations intra-entreprise et inter-entreprises. Certifiants, pratiques et immédiatement applicables."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.5);">Services</span>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Formation SEO</span>
+      </nav>
+      <span class="badge badge-formation" style="margin-bottom: 1rem; display: inline-block;">Formation certifiante</span>
+      <h1 class="section-title-white" style="margin-bottom: 1.25rem; max-width: 700px;">Formez vos équipes au SEO qui génère vraiment des résultats</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6; margin-bottom: 2rem;">
+        Des formations pratiques, basées sur des cas réels et immédiatement applicables. Vos équipes repartent avec des méthodes concrètes, pas de la théorie.
+      </p>
+      <a href="/contact" class="btn-primary">Demander un programme →</a>
+    </div>
+  </section>
+
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Nos programmes</div>
+        <h2 class="section-title">Formations disponibles</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        {[
+          { title: 'SEO Fondamentaux', duration: '1 jour (7h)', level: 'Débutant', price: '490€ HT/pers.', desc: 'Comprendre le SEO, les bases techniques, les mots-clés et la création de contenu optimisé. Idéal pour les non-techniciens.' },
+          { title: 'SEO Avancé & Technique', duration: '2 jours (14h)', level: 'Intermédiaire', price: '890€ HT/pers.', desc: 'Audit technique, Core Web Vitals, structured data, netlinking avancé et analyse avec Search Console.' },
+          { title: 'Content Marketing SEO', duration: '1 jour (7h)', level: 'Intermédiaire', price: '490€ HT/pers.', desc: 'Stratégie de contenu, topic clusters, rédaction SEO, brief éditorial et calendrier de publication.' },
+          { title: 'Formation sur-mesure', duration: 'Sur devis', level: 'Tous niveaux', price: 'Sur devis', desc: 'Programme personnalisé pour votre secteur, vos outils et vos objectifs. Format intra-entreprise exclusivement.' },
+        ].map(f => (
+          <div style="background: #fff; border-radius: var(--radius-lg); border: 1px solid #f0f0f0; padding: 2rem; display: flex; flex-direction: column; transition: all 0.3s;" onmouseover="this.style.boxShadow='var(--shadow-hover)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow=''; this.style.transform=''">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+              <span class="badge badge-formation">{f.level}</span>
+              <span style="font-family: var(--font-serif); font-weight: 700; color: var(--cyan-dark);">{f.price}</span>
+            </div>
+            <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.25rem; margin-bottom: 0.5rem;">{f.title}</h3>
+            <div style="font-size: 0.8125rem; color: #9ca3af; margin-bottom: 1rem;">⏱ {f.duration}</div>
+            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; flex: 1; margin-bottom: 1.5rem;">{f.desc}</p>
+            <a href="/contact" class="btn-outline-dark" style="text-align: center; justify-content: center;">Demander un devis</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Votre équipe mérite d'être formée par des praticiens</h2>
+      <p>Pas des formateurs théoriques, mais des experts qui font du SEO au quotidien pour des clients réels.</p>
+      <a href="/contact" class="btn-outline-dark">Discuter de votre programme</a>
+    </div>
+  </div>
+</BaseLayout>

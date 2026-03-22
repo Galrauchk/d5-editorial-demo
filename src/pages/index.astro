@@ -1,17 +1,277 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { articles } from '../data/articles';
+import { caseStudies } from '../data/caseStudies';
 
+const featuredArticle = articles[0];
+const recentArticles = articles.slice(1);
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Stratègere",
+  "description": "Agence SEO & Content Marketing à Montpellier. Référencement naturel, Google Ads, stratégie de contenu.",
+  "url": "https://d5-editorial-demo.netlify.app",
+  "priceRange": "€€",
+  "telephone": "04 67 00 00 00",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Rue de la République",
+    "addressLocality": "Montpellier",
+    "postalCode": "34000",
+    "addressCountry": "FR"
+  }
+};
+
+const categories = [
+  { label: 'Tout', href: '/blog', slug: 'all' },
+  { label: 'SEO', href: '/blog/categorie/seo', slug: 'seo' },
+  { label: 'Content Marketing', href: '/blog/categorie/content-marketing', slug: 'content-marketing' },
+  { label: 'Google Ads', href: '/blog/categorie/google-ads', slug: 'google-ads' },
+  { label: 'Analytics', href: '/blog/categorie/analytics', slug: 'analytics' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Stratègere — Agence SEO & Content Marketing Montpellier | Blog Expert"
+  description="Agence SEO spécialisée en référencement naturel, content marketing et Google Ads. Découvrez nos guides experts, études de cas et ressources gratuites pour booster votre visibilité."
+  schema={homeSchema}
+>
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section" style="padding: 5rem 0 4rem;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        <div class="animate-fade-in-up">
+          <div class="section-label" style="margin-bottom: 1rem;">Agence SEO & Content Marketing</div>
+          <h1 style="font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 1.5rem;">
+            Dominez Google.<br />
+            <span class="text-gradient">Générez des leads</span><br />
+            qui convertissent.
+          </h1>
+          <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; max-width: 480px;">
+            Stratègere est l'agence SEO de référence à Montpellier. Nous transformons votre visibilité organique en machine à leads qualifiés — durablement.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="/audit-gratuit" class="btn-primary">Audit SEO gratuit →</a>
+            <a href="/cas-clients" class="btn-secondary">Voir nos résultats</a>
+          </div>
+
+          <!-- Trust badges -->
+          <div style="margin-top: 2.5rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+            <div style="text-align: center;">
+              <div style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; color: var(--cyan);">+200</div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em;">clients</div>
+            </div>
+            <div style="width: 1px; height: 2.5rem; background: rgba(255,255,255,0.15);"></div>
+            <div style="text-align: center;">
+              <div style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; color: var(--cyan);">4.9★</div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em;">satisfaction</div>
+            </div>
+            <div style="width: 1px; height: 2.5rem; background: rgba(255,255,255,0.15);"></div>
+            <div style="text-align: center;">
+              <div style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700; color: var(--cyan);">+340%</div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em;">trafic moyen</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured article card -->
+        <div class="animate-fade-in animate-delay-200">
+          <ArticleCard {...featuredArticle} featured={true} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY FILTER + ARTICLES ===== -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div class="section-label" style="margin-bottom: 0.5rem;">Le blog</div>
+          <h2 class="section-title">Dernières ressources SEO</h2>
+        </div>
+        <div class="category-pills">
+          {categories.map(cat => (
+            <a href={cat.href} class={`category-pill ${cat.slug === 'all' ? 'active' : ''}`}>{cat.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        {recentArticles.map(article => (
+          <ArticleCard {...article} />
+        ))}
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/blog" class="btn-outline-dark">Voir tous les articles →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES SECTION ===== -->
+  <section style="padding: 5rem 0; background: #f9fafb;">
+    <div class="container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Nos expertises</div>
+        <h2 class="section-title">Ce que nous faisons exceptionnellement bien</h2>
+        <p style="color: #6b7280; font-size: 1.0625rem; margin-top: 1rem; line-height: 1.6;">Chaque service est piloté par des experts certifiés qui ne font qu'une seule chose : maximiser votre retour sur investissement digital.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <a href="/services/seo" class="service-card" style="text-decoration: none;">
+          <div class="service-icon">🔍</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">Référencement SEO</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem;">Audit technique, stratégie de mots-clés, création de contenu et netlinking pour dominer les résultats organiques.</p>
+          <span style="color: var(--blue); font-size: 0.875rem; font-weight: 600;">En savoir plus →</span>
+        </a>
+
+        <a href="/services/content-marketing" class="service-card" style="text-decoration: none;">
+          <div class="service-icon" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">✍️</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">Content Marketing</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem;">Stratégie éditoriale, création d'articles expertises, guides PDF et newsletters qui génèrent des leads qualifiés.</p>
+          <span style="color: var(--blue); font-size: 0.875rem; font-weight: 600;">En savoir plus →</span>
+        </a>
+
+        <a href="/services/google-ads" class="service-card" style="text-decoration: none;">
+          <div class="service-icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">📊</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">Google Ads</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem;">Campagnes Search, Performance Max et Shopping optimisées pour un ROAS maximal. Pilotage ROI-first.</p>
+          <span style="color: var(--blue); font-size: 0.875rem; font-weight: 600;">En savoir plus →</span>
+        </a>
+
+        <a href="/services/audit-digital" class="service-card" style="text-decoration: none;">
+          <div class="service-icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">🔬</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">Audit Digital</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem;">Audit SEO technique, audit de contenu, analyse concurrentielle et plan d'action prioritaire chiffré.</p>
+          <span style="color: var(--blue); font-size: 0.875rem; font-weight: 600;">En savoir plus →</span>
+        </a>
+
+        <a href="/services/formation-seo" class="service-card" style="text-decoration: none;">
+          <div class="service-icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">🎓</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">Formation SEO</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem;">Formations sur-mesure pour vos équipes. Prenez le contrôle de votre SEO avec des méthodes éprouvées.</p>
+          <span style="color: var(--blue); font-size: 0.875rem; font-weight: 600;">En savoir plus →</span>
+        </a>
+
+        <a href="/services/conseil-strategique" class="service-card" style="text-decoration: none;">
+          <div class="service-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🎯</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">Conseil Stratégique</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem;">Accompagnement stratégique au plus haut niveau. CMO externalisé, roadmap digitale et pilotage de la croissance.</p>
+          <span style="color: var(--blue); font-size: 0.875rem; font-weight: 600;">En savoir plus →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE STUDIES ===== -->
+  <section style="padding: 5rem 0; background: var(--navy);">
+    <div class="container">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div class="section-label" style="margin-bottom: 0.5rem;">Résultats concrets</div>
+          <h2 class="section-title-white">Nos clients témoignent</h2>
+        </div>
+        <a href="/cas-clients" class="btn-secondary">Tous les cas clients →</a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+        {caseStudies.map(cs => (
+          <a href={`/cas-clients/${cs.slug}`} class="case-study-card" style="text-decoration: none;">
+            <div style="aspect-ratio: 16/7; overflow: hidden;">
+              <img src={cs.image} alt={cs.client} width="600" height="263" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
+            </div>
+            <div style="padding: 1.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan);">{cs.sector}</span>
+                <span style="color: rgba(255,255,255,0.3);">·</span>
+                <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">{cs.duration}</span>
+              </div>
+              <h3 style="font-family: var(--font-serif); color: #fff; font-size: 1.25rem; margin-bottom: 1rem;">{cs.client}</h3>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem;">
+                {cs.results.map(r => (
+                  <div class="case-metric">
+                    <div class="case-metric-value">{r.metric}</div>
+                    <div class="case-metric-label">{r.description}</div>
+                  </div>
+                ))}
+              </div>
+              <blockquote style="border-left: 3px solid rgba(0,229,255,0.3); padding-left: 1rem; margin: 0;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.875rem; font-style: italic; line-height: 1.5; margin: 0;">{cs.testimonial.quote.substring(0, 120)}...</p>
+                <footer style="margin-top: 0.5rem; font-size: 0.8125rem; color: rgba(255,255,255,0.5);">— {cs.testimonial.author}</footer>
+              </blockquote>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESOURCES SECTION ===== -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Ressources gratuites</div>
+        <h2 class="section-title">Guides PDF & outils à télécharger</h2>
+        <p style="color: #6b7280; margin-top: 1rem; font-size: 1.0625rem;">Des ressources pratiques créées par nos experts pour vous aider à mettre en place votre stratégie SEO.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <div class="resource-card">
+          <div style="background: linear-gradient(135deg, #0a0f1e, #1a2237); padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 180px;">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">📋</div>
+            <span class="badge badge-seo">Guide PDF</span>
+          </div>
+          <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+            <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.125rem; margin-bottom: 0.5rem;">Checklist SEO Technique 2026</h3>
+            <p style="color: #6b7280; font-size: 0.875rem; line-height: 1.6; flex: 1; margin-bottom: 1.25rem;">87 points de contrôle pour un audit technique complet. Format Google Sheets inclus.</p>
+            <a href="/ressources" class="btn-primary" style="justify-content: center; font-size: 0.875rem; padding: 0.625rem 1rem;">Télécharger gratuitement</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div style="background: linear-gradient(135deg, #1a0a2e, #2d1b69); padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 180px;">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">📊</div>
+            <span class="badge badge-content">Modèle Excel</span>
+          </div>
+          <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+            <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.125rem; margin-bottom: 0.5rem;">Template Calendrier Éditorial</h3>
+            <p style="color: #6b7280; font-size: 0.875rem; line-height: 1.6; flex: 1; margin-bottom: 1.25rem;">Planifiez 6 mois de contenu SEO avec notre template Google Sheets optimisé.</p>
+            <a href="/ressources" class="btn-primary" style="justify-content: center; font-size: 0.875rem; padding: 0.625rem 1rem;">Télécharger gratuitement</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div style="background: linear-gradient(135deg, #1a0f0a, #371b0a); padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 180px;">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">🎯</div>
+            <span class="badge badge-ads">Calculateur</span>
+          </div>
+          <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+            <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.125rem; margin-bottom: 0.5rem;">Calculateur ROI Google Ads</h3>
+            <p style="color: #6b7280; font-size: 0.875rem; line-height: 1.6; flex: 1; margin-bottom: 1.25rem;">Estimez la rentabilité de vos campagnes Google Ads avant de lancer. Outil interactif.</p>
+            <a href="/ressources" class="btn-primary" style="justify-content: center; font-size: 0.875rem; padding: 0.625rem 1rem;">Télécharger gratuitement</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="/ressources" class="btn-outline-dark">Voir toutes les ressources →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND ===== -->
+  <div class="cta-band">
+    <div class="container">
+      <div class="section-label" style="color: rgba(10,15,30,0.6); margin-bottom: 0.75rem;">Passez à l'action</div>
+      <h2>Votre concurrent est peut-être en train de nous appeler</h2>
+      <p>Recevez votre audit SEO gratuit en 48h. Nos experts analysent votre site et vous livrent un plan d'action chiffré.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/audit-gratuit" class="btn-outline-dark">Demander mon audit gratuit</a>
+        <a href="/contact" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--navy); font-weight: 600; text-decoration: none;">Ou parlons-nous → </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

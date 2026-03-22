@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { articles } from '../../data/articles';
+
+const categories = [
+  { label: 'Tout', href: '/blog', slug: 'all' },
+  { label: 'SEO', href: '/blog/categorie/seo', slug: 'seo' },
+  { label: 'Content Marketing', href: '/blog/categorie/content-marketing', slug: 'content-marketing' },
+  { label: 'Google Ads', href: '/blog/categorie/google-ads', slug: 'google-ads' },
+  { label: 'Analytics', href: '/blog/categorie/analytics', slug: 'analytics' },
+];
+---
+
+<BaseLayout
+  title="Blog SEO & Marketing Digital | Stratègere"
+  description="Guides experts, analyses et stratégies SEO, content marketing et Google Ads. Ressources gratuites pour booster votre visibilité organique."
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Blog</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Le blog Stratègere</div>
+      <h1 class="section-title-white" style="margin-bottom: 1rem;">Ressources SEO & Marketing Digital</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6;">
+        Guides pratiques, analyses de tendances et stratégies éprouvées par nos experts. Tout ce qu'il faut savoir pour dominer Google en 2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section style="padding: 2rem 0; border-bottom: 1px solid #f0f0f0; background: #fff; position: sticky; top: 70px; z-index: 10;">
+    <div class="container">
+      <div class="category-pills">
+        {categories.map(cat => (
+          <a href={cat.href} class={`category-pill ${cat.slug === 'all' ? 'active' : ''}`}>{cat.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <!-- Featured -->
+      <div style="margin-bottom: 3rem;">
+        <ArticleCard {...articles[0]} featured={true} />
+      </div>
+
+      <!-- Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+        {articles.slice(1).map(article => (
+          <ArticleCard {...article} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section style="padding: 4rem 0; background: var(--navy);">
+    <div class="container" style="max-width: 680px; text-align: center;">
+      <div class="section-label" style="margin-bottom: 0.75rem;">Newsletter hebdomadaire</div>
+      <h2 class="section-title-white" style="margin-bottom: 1rem;">Ne manquez aucun article</h2>
+      <p style="color: rgba(255,255,255,0.65); margin-bottom: 2rem; font-size: 1.0625rem;">Rejoignez 4 200+ professionnels qui reçoivent nos analyses SEO chaque semaine.</p>
+      <form style="display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto;" onsubmit="event.preventDefault()">
+        <input type="email" placeholder="votre@email.fr" class="newsletter-input" style="flex: 1;" />
+        <button type="submit" class="btn-primary">S'abonner</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,306 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { articles } from '../data/articles';
+
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  author: string;
+  authorSlug: string;
+  date: string;
+  readTime: number;
+  category: string;
+  categorySlug: string;
+  tags: string[];
+  relatedSlugs: string[];
+  slug: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  author,
+  authorSlug,
+  date,
+  readTime,
+  category,
+  categorySlug,
+  tags,
+  relatedSlugs,
+  slug
+} = Astro.props;
+
+const siteUrl = 'https://d5-editorial-demo.netlify.app';
+const articleUrl = `${siteUrl}/blog/${slug}`;
+
+const relatedArticles = articles.filter(a => relatedSlugs.includes(a.slug)).slice(0, 3);
+
+const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+});
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "image": image,
+  "url": articleUrl,
+  "datePublished": date,
+  "dateModified": date,
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "url": `${siteUrl}/equipe`
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Stratègere",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": articleUrl
+  }
+};
+
+const categoryColors: Record<string, string> = {
+  seo: 'badge-seo',
+  'content-marketing': 'badge-content',
+  'google-ads': 'badge-ads',
+  analytics: 'badge-analytics',
+  formation: 'badge-formation',
+  conseil: 'badge-conseil'
+};
+const badgeClass = categoryColors[categorySlug] || 'badge-seo';
+---
+
+<BaseLayout
+  title={`${title} | Stratègere`}
+  description={description}
+  image={image}
+  type="article"
+  schema={articleSchema}
+>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- Social Share Sticky -->
+  <div class="social-share-sticky">
+    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(articleUrl)}`} target="_blank" rel="noopener" class="social-share-btn" title="Partager sur Twitter">
+      𝕏
+    </a>
+    <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`} target="_blank" rel="noopener" class="social-share-btn" title="Partager sur LinkedIn">
+      in
+    </a>
+    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`} target="_blank" rel="noopener" class="social-share-btn" title="Partager sur Facebook">
+      f
+    </a>
+    <button onclick="navigator.clipboard.writeText(window.location.href)" class="social-share-btn" title="Copier le lien">
+      🔗
+    </button>
+  </div>
+
+  <!-- Article Hero -->
+  <section style="background: var(--gradient-hero); padding: 3rem 0 0;">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/blog">Blog</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href={`/blog/categorie/${categorySlug}`}>{category}</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.5);">{title.substring(0, 40)}...</span>
+      </nav>
+
+      <div style="max-width: 800px;">
+        <span class={`badge ${badgeClass}`} style="margin-bottom: 1rem; display: inline-block;">{category}</span>
+        <h1 style="font-family: var(--font-serif); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 1.25rem;">{title}</h1>
+        <p style="color: rgba(255,255,255,0.75); font-size: 1.125rem; line-height: 1.6; margin-bottom: 1.5rem;">{description}</p>
+
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.625rem;">
+            <div style="width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--gradient-cta); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--navy);">
+              {author.split(' ').map((n: string) => n[0]).join('')}
+            </div>
+            <div>
+              <div style="color: #fff; font-weight: 600; font-size: 0.875rem;">{author}</div>
+            </div>
+          </div>
+          <span style="color: rgba(255,255,255,0.4);">·</span>
+          <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">{formattedDate}</span>
+          <span style="color: rgba(255,255,255,0.4);">·</span>
+          <span style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">{readTime} min de lecture</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero image -->
+    <div style="margin-top: 2.5rem; max-height: 450px; overflow: hidden;">
+      <img src={image} alt={title} width="1280" height="450" style="width: 100%; height: 450px; object-fit: cover;" loading="eager" fetchpriority="high" />
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 280px; gap: 4rem; align-items: start;" class="article-grid">
+
+        <!-- Main Content -->
+        <article>
+          <div class="article-body" id="articleBody">
+            <slot />
+          </div>
+
+          <!-- Tags -->
+          <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <span style="font-size: 0.875rem; font-weight: 600; color: var(--navy);">Tags :</span>
+              {tags.map(tag => (
+                <a href={`/blog?q=${encodeURIComponent(tag)}`} class="tag-pill">{tag}</a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Author Bio -->
+          <div style="margin-top: 2.5rem; background: #f9fafb; border-radius: var(--radius-lg); padding: 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; border: 1px solid #f0f0f0;">
+            <div style="width: 4rem; height: 4rem; border-radius: 50%; background: var(--gradient-cta); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--navy); flex-shrink: 0;">
+              {author.split(' ').map((n: string) => n[0]).join('')}
+            </div>
+            <div>
+              <div style="font-family: var(--font-serif); font-weight: 700; color: var(--navy); font-size: 1.0625rem;">{author}</div>
+              <div style="font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem;">Experte SEO chez Stratègere</div>
+              <a href="/equipe" style="font-size: 0.875rem; color: var(--blue); margin-top: 0.5rem; display: inline-block;">Voir le profil →</a>
+            </div>
+          </div>
+
+          <!-- Newsletter Inline -->
+          <div class="newsletter-inline">
+            <h3>Recevez nos meilleures ressources SEO</h3>
+            <p>Chaque semaine, nos experts partagent leurs analyses, guides et études de cas. Rejoignez 4 200+ professionnels du digital.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault()">
+              <input type="email" placeholder="votre@email.fr" class="newsletter-input" />
+              <button type="submit" class="btn-primary">S'abonner gratuitement</button>
+            </form>
+          </div>
+        </article>
+
+        <!-- Sidebar TOC -->
+        <aside>
+          <div class="toc-sidebar" id="tocSidebar">
+            <div style="background: #f9fafb; border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid #f0f0f0; margin-bottom: 1.5rem;">
+              <h2 style="font-family: var(--font-serif); font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem;">Dans cet article</h2>
+              <ul class="toc-list" id="tocList">
+                <!-- Filled by JS -->
+              </ul>
+            </div>
+
+            <!-- CTA -->
+            <div style="background: var(--gradient-hero); border-radius: var(--radius-lg); padding: 1.5rem; border: 1px solid rgba(0,229,255,0.2);">
+              <div style="font-size: 1.5rem; margin-bottom: 0.75rem;">🎯</div>
+              <h3 style="font-family: var(--font-serif); color: #fff; font-size: 1.0625rem; margin-bottom: 0.5rem;">Audit SEO gratuit</h3>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.875rem; margin-bottom: 1rem;">Découvrez les freins cachés de votre site en 48h.</p>
+              <a href="/audit-gratuit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 0.875rem; padding: 0.625rem 1rem;">Demander mon audit</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Articles -->
+  {relatedArticles.length > 0 && (
+    <section style="padding: 4rem 0; background: #f9fafb; border-top: 1px solid #f0f0f0;">
+      <div class="container">
+        <h2 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--navy); margin-bottom: 2rem;">Articles liés</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          {relatedArticles.map(article => (
+            <a href={`/blog/${article.slug}`} class="card-article" style="text-decoration: none;">
+              <div class="card-article-image">
+                <img src={article.image} alt={article.title} width="400" height="225" loading="lazy" />
+              </div>
+              <div class="card-article-body">
+                <span class={`badge ${categoryColors[article.categorySlug] || 'badge-seo'}`} style="margin-bottom: 0.5rem; display: inline-block;">{article.category}</span>
+                <h3 class="card-article-title">{article.title}</h3>
+                <div class="card-meta">
+                  <span>{article.readTime} min</span>
+                  <span>·</span>
+                  <span>{new Date(article.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  @media (max-width: 900px) {
+    .article-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .article-grid > aside {
+      order: -1;
+    }
+    #tocSidebar {
+      position: static !important;
+    }
+  }
+</style>
+
+<script>
+  // Reading progress bar
+  const progress = document.getElementById('readingProgress');
+  if (progress) {
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || document.body.scrollTop;
+      const scrollHeight = doc.scrollHeight - doc.clientHeight;
+      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      (progress as HTMLElement).style.width = pct + '%';
+    });
+  }
+
+  // Build TOC from article headings
+  const articleBody = document.getElementById('articleBody');
+  const tocList = document.getElementById('tocList');
+  if (articleBody && tocList) {
+    const headings = articleBody.querySelectorAll('h2, h3');
+    headings.forEach(heading => {
+      const id = heading.id || heading.textContent?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || '';
+      if (!heading.id) heading.id = id;
+      const li = document.createElement('li');
+      li.className = 'toc-item';
+      li.dataset.id = id;
+      const indent = heading.tagName === 'H3' ? 'padding-left: 1rem;' : '';
+      li.innerHTML = `<a href="#${id}" class="toc-link" style="${indent}">${heading.textContent}</a>`;
+      tocList.appendChild(li);
+    });
+
+    // Active TOC item on scroll
+    const items = tocList.querySelectorAll('.toc-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          items.forEach(item => item.classList.remove('active'));
+          const active = tocList.querySelector(`[data-id="${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+  }
+</script>

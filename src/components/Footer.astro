@@ -1,0 +1,105 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <!-- Newsletter band -->
+  <div style="background: var(--navy-mid); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 3rem 0;">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+      <div>
+        <div class="section-label" style="margin-bottom: 0.5rem;">Newsletter</div>
+        <h2 style="font-family: var(--font-serif); color: #fff; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Le SEO sans jargon, chaque semaine</h2>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">4 200+ professionnels font confiance à notre newsletter pour rester à la pointe du SEO.</p>
+      </div>
+      <form style="display: flex; gap: 0.75rem; flex-wrap: wrap;" onsubmit="event.preventDefault()">
+        <input type="email" placeholder="votre@email.fr" class="newsletter-input" style="flex: 1; min-width: 200px;" />
+        <button type="submit" class="btn-primary">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main footer -->
+  <div style="padding: 4rem 0 2rem;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+
+        <!-- Brand column -->
+        <div>
+          <a href="/" style="display: flex; align-items: center; gap: 0.625rem; margin-bottom: 1rem;">
+            <div style="width: 2rem; height: 2rem; background: var(--gradient-cta); border-radius: 0.375rem; display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: var(--font-serif); font-weight: 700; color: var(--navy);">S</span>
+            </div>
+            <span style="font-family: var(--font-serif); font-weight: 700; color: #fff; font-size: 1.25rem;">Stratègere</span>
+          </a>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.7; margin-bottom: 1.25rem;">
+            Agence SEO & Content Marketing basée à Montpellier. Nous aidons les entreprises ambitieuses à dominer Google et générer des leads qualifiés durablement.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.375rem; font-size: 0.875rem; color: rgba(255,255,255,0.55);">
+            <span>📍 15 Rue de la République, 34000 Montpellier</span>
+            <span>📞 <a href="tel:0467000000" style="color: rgba(255,255,255,0.55);">04 67 00 00 00</a></span>
+            <span>✉️ <a href="mailto:bonjour@strategere.fr" style="color: rgba(255,255,255,0.55);">bonjour@strategere.fr</a></span>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="footer-title">Services</h3>
+          <nav>
+            <a href="/services/seo" class="footer-link">Référencement SEO</a>
+            <a href="/services/content-marketing" class="footer-link">Content Marketing</a>
+            <a href="/services/google-ads" class="footer-link">Google Ads</a>
+            <a href="/services/audit-digital" class="footer-link">Audit Digital</a>
+            <a href="/services/formation-seo" class="footer-link">Formation SEO</a>
+            <a href="/services/conseil-strategique" class="footer-link">Conseil Stratégique</a>
+          </nav>
+        </div>
+
+        <!-- Ressources -->
+        <div>
+          <h3 class="footer-title">Ressources</h3>
+          <nav>
+            <a href="/blog" class="footer-link">Blog SEO</a>
+            <a href="/ressources" class="footer-link">Guides gratuits</a>
+            <a href="/glossaire" class="footer-link">Glossaire SEO</a>
+            <a href="/cas-clients" class="footer-link">Cas clients</a>
+            <a href="/audit-gratuit" class="footer-link">Audit gratuit</a>
+          </nav>
+        </div>
+
+        <!-- Agence -->
+        <div>
+          <h3 class="footer-title">Agence</h3>
+          <nav>
+            <a href="/a-propos" class="footer-link">À propos</a>
+            <a href="/equipe" class="footer-link">Notre équipe</a>
+            <a href="/contact" class="footer-link">Contact</a>
+            <a href="/mentions-legales" class="footer-link">Mentions légales</a>
+            <a href="/cgv" class="footer-link">CGV</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div style="padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+          <span style="font-size: 0.8125rem; color: rgba(255,255,255,0.4); font-weight: 600;">CATÉGORIES :</span>
+          <a href="/blog/categorie/seo" style="font-size: 0.8125rem; color: var(--cyan); opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">SEO</a>
+          <a href="/blog/categorie/content-marketing" style="font-size: 0.8125rem; color: #a855f7; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Content Marketing</a>
+          <a href="/blog/categorie/google-ads" style="font-size: 0.8125rem; color: var(--orange); opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Google Ads</a>
+          <a href="/blog/categorie/analytics" style="font-size: 0.8125rem; color: #22c55e; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Analytics</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <span>© {year} Stratègere — Agence SEO Montpellier. Tous droits réservés.</span>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="/mentions-legales" style="color: rgba(255,255,255,0.4); font-size: 0.8125rem;">Mentions légales</a>
+          <a href="/cgv" style="color: rgba(255,255,255,0.4); font-size: 0.8125rem;">CGV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

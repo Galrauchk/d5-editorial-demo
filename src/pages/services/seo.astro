@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Référencement SEO",
+  "provider": { "@type": "Organization", "name": "Stratègere" },
+  "description": "Service de référencement naturel (SEO) pour améliorer votre positionnement sur Google.",
+  "areaServed": "France",
+  "url": "https://d5-editorial-demo.netlify.app/services/seo"
+};
+
+const faq = [
+  { q: "Combien de temps pour voir des résultats SEO ?", a: "Les premiers résultats sont visibles à partir de 3 à 6 mois. Les résultats significatifs arrivent généralement entre 6 et 12 mois selon la compétitivité de votre secteur." },
+  { q: "Quelle est la différence entre SEO et SEA ?", a: "Le SEO (référencement naturel) génère du trafic organique gratuit sur le long terme. Le SEA (Google Ads) génère du trafic payant immédiat. Les deux sont complémentaires." },
+  { q: "Combien coûte une prestation SEO ?", a: "Nos prestations SEO débutent à 900€/mois pour un accompagnement complet. Chaque devis est personnalisé selon vos objectifs et la concurrence dans votre secteur." },
+];
+---
+
+<BaseLayout
+  title="Référencement SEO Montpellier | Agence SEO Expert | Stratègere"
+  description="Agence SEO Montpellier. Audit technique, stratégie de mots-clés, création de contenu et netlinking pour dominer Google. +340% de trafic en moyenne."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.5);">Services</span>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Référencement SEO</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Service #1</div>
+      <h1 class="section-title-white" style="margin-bottom: 1.25rem; max-width: 700px;">Référencement SEO qui génère des leads, pas juste du trafic</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 580px; line-height: 1.6; margin-bottom: 2rem;">
+        Notre approche SEO est 100% orientée résultats business. Nous ne courons pas après les positions : nous construisons un système organique qui convertit.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="/audit-gratuit" class="btn-primary">Audit SEO gratuit →</a>
+        <a href="/cas-clients" class="btn-secondary">Voir nos résultats</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+        <div class="stat-item">
+          <span class="stat-number">+340%</span>
+          <div class="stat-label">Trafic organique moyen</div>
+        </div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);">
+          <span class="stat-number">+200</span>
+          <div class="stat-label">Clients accompagnés</div>
+        </div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);">
+          <span class="stat-number">12 ans</span>
+          <div class="stat-label">D'expérience SEO</div>
+        </div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);">
+          <span class="stat-number">4.9★</span>
+          <div class="stat-label">Satisfaction client</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services détail -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Notre méthode</div>
+        <h2 class="section-title">Le SEO selon Stratègere : une méthode en 4 piliers</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <div style="padding: 2rem; border: 1px solid #f0f0f0; border-radius: var(--radius-lg);">
+          <div style="width: 3rem; height: 3rem; background: rgba(0,229,255,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem;">🔬</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">1. Audit & stratégie</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6;">Audit technique complet, analyse des opportunités de mots-clés, étude concurrentielle et roadmap SEO 12 mois.</p>
+        </div>
+
+        <div style="padding: 2rem; border: 1px solid #f0f0f0; border-radius: var(--radius-lg);">
+          <div style="width: 3rem; height: 3rem; background: rgba(0,229,255,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem;">⚙️</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">2. SEO technique</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6;">Crawl, indexation, Core Web Vitals, structured data, redirections et architecture de site. Les fondations qui permettent tout le reste.</p>
+        </div>
+
+        <div style="padding: 2rem; border: 1px solid #f0f0f0; border-radius: var(--radius-lg);">
+          <div style="width: 3rem; height: 3rem; background: rgba(0,229,255,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem;">✍️</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">3. Contenu SEO</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6;">Création de pages piliers, articles de blog, pages locales et cocons sémantiques. Du contenu qui convertit et qui se classe.</p>
+        </div>
+
+        <div style="padding: 2rem; border: 1px solid #f0f0f0; border-radius: var(--radius-lg);">
+          <div style="width: 3rem; height: 3rem; background: rgba(0,229,255,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem;">🔗</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">4. Netlinking</h3>
+          <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6;">Acquisition de backlinks qualitatifs via des partenariats éditoriaux, digital PR et des contenus qui méritent naturellement des liens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding: 4rem 0; background: #f9fafb;">
+    <div class="container" style="max-width: 800px;">
+      <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--navy); margin-bottom: 2rem; text-align: center;">Questions fréquentes</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        {faq.map(item => (
+          <div style="background: #fff; border-radius: var(--radius); padding: 1.5rem; border: 1px solid #f0f0f0;">
+            <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.0625rem; margin-bottom: 0.75rem;">{item.q}</h3>
+            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin: 0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <h2>Prêt à dominer Google ?</h2>
+      <p>Recevez votre audit SEO gratuit et découvrez les opportunités cachées de votre site.</p>
+      <a href="/audit-gratuit" class="btn-outline-dark">Demander mon audit gratuit</a>
+    </div>
+  </div>
+</BaseLayout>

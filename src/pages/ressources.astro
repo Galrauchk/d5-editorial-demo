@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const resources = [
+  {
+    title: 'Checklist SEO Technique 2026',
+    type: 'Checklist PDF',
+    category: 'SEO',
+    badgeClass: 'badge-seo',
+    desc: '87 points de contrôle pour un audit technique SEO complet. Format Google Sheets inclus. Mis à jour pour les algorithmes 2026.',
+    icon: '📋',
+    color: 'linear-gradient(135deg, #0a0f1e, #1a2237)',
+    downloads: '2 840',
+  },
+  {
+    title: 'Template Calendrier Éditorial',
+    type: 'Modèle Google Sheets',
+    category: 'Content',
+    badgeClass: 'badge-content',
+    desc: 'Planifiez 6 mois de contenu SEO avec notre template Google Sheets optimisé. Inclut un onglet suivi des positions.',
+    icon: '📅',
+    color: 'linear-gradient(135deg, #1a0a2e, #2d1b69)',
+    downloads: '1 920',
+  },
+  {
+    title: 'Calculateur ROI Google Ads',
+    type: 'Outil interactif',
+    category: 'Google Ads',
+    badgeClass: 'badge-ads',
+    desc: 'Estimez la rentabilité de vos campagnes Google Ads avant de les lancer. Calcul automatique du ROAS, CPA et budget optimal.',
+    icon: '🎯',
+    color: 'linear-gradient(135deg, #1a0f0a, #371b0a)',
+    downloads: '1 450',
+  },
+  {
+    title: 'Guide Core Web Vitals 2026',
+    type: 'Guide PDF (28 pages)',
+    category: 'Analytics',
+    badgeClass: 'badge-analytics',
+    desc: 'Tout ce qu\'il faut savoir sur LCP, CLS et INP. Techniques d\'optimisation avec exemples de code inclus.',
+    icon: '⚡',
+    color: 'linear-gradient(135deg, #0a1e0a, #0d3b0d)',
+    downloads: '3 100',
+  },
+  {
+    title: 'Kit Audit SEO Complet',
+    type: 'Pack de 5 templates',
+    category: 'SEO',
+    badgeClass: 'badge-seo',
+    desc: '5 templates Google Sheets pour auditer votre site : crawl, contenu, backlinks, Core Web Vitals, concurrents.',
+    icon: '🔬',
+    color: 'linear-gradient(135deg, #0a0f1e, #1a3a4a)',
+    downloads: '2 210',
+  },
+  {
+    title: 'Brief Éditorial Template',
+    type: 'Template Notion',
+    category: 'Content',
+    badgeClass: 'badge-content',
+    desc: 'Brief éditorial complet pour briefer vos rédacteurs et garantir des articles SEO optimisés et cohérents.',
+    icon: '✍️',
+    color: 'linear-gradient(135deg, #2d0a2e, #4a1669)',
+    downloads: '1 680',
+  },
+];
+---
+
+<BaseLayout
+  title="Ressources SEO Gratuites | Guides, Templates & Outils | Stratègere"
+  description="Téléchargez nos ressources SEO gratuites : checklist technique, templates de calendrier éditorial, calculateur ROI Google Ads, guide Core Web Vitals."
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Ressources</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">100% gratuit</div>
+      <h1 class="section-title-white" style="margin-bottom: 1rem;">Ressources & outils SEO gratuits</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6;">
+        Des ressources pratiques créées par nos experts et téléchargées par plus de 12 000 professionnels du digital. Gratuitement, sans engagement.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-item"><span class="stat-number">12 000+</span><div class="stat-label">Téléchargements</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">6</span><div class="stat-label">Ressources disponibles</div></div>
+        <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">100%</span><div class="stat-label">Gratuit</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Grid -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+        {resources.map(r => (
+          <div class="resource-card">
+            <div style={`background: ${r.color}; padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; text-align: center;`}>
+              <div style="font-size: 3.5rem; margin-bottom: 1rem;">{r.icon}</div>
+              <span class={`badge ${r.badgeClass}`} style="margin-bottom: 0.5rem;">{r.type}</span>
+            </div>
+            <div style="padding: 1.75rem; flex: 1; display: flex; flex-direction: column;">
+              <h2 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.1875rem; margin-bottom: 0.625rem; line-height: 1.3;">{r.title}</h2>
+              <p style="color: #6b7280; font-size: 0.9rem; line-height: 1.6; flex: 1; margin-bottom: 1.25rem;">{r.desc}</p>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+                <span style="font-size: 0.8125rem; color: #9ca3af;">⬇ {r.downloads} téléchargements</span>
+              </div>
+              <button
+                onclick="this.innerHTML='✓ Lien envoyé !'; this.disabled=true; this.style.opacity='0.7'"
+                class="btn-primary"
+                style="width: 100%; justify-content: center;"
+              >
+                Télécharger gratuitement
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section style="padding: 4rem 0; background: #f9fafb;">
+    <div class="container" style="max-width: 680px; text-align: center;">
+      <h2 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.75rem; margin-bottom: 1rem;">Soyez prévenu des nouvelles ressources</h2>
+      <p style="color: #6b7280; margin-bottom: 2rem; font-size: 1.0625rem;">Nous publions de nouvelles ressources chaque mois. Inscrivez-vous pour être le premier informé.</p>
+      <form style="display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto; flex-wrap: wrap;" onsubmit="event.preventDefault()">
+        <input type="email" placeholder="votre@email.fr" style="flex: 1; min-width: 200px; background: #fff; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.9375rem; outline: none;" />
+        <button type="submit" class="btn-primary">M'alerter</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

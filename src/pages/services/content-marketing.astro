@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Content Marketing & Stratégie de Contenu | Stratègere Montpellier"
+  description="Stratégie de content marketing sur-mesure : calendrier éditorial, articles SEO, guides PDF, newsletters. Générez des leads qualifiés grâce au contenu."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.5);">Services</span>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Content Marketing</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Content Marketing</div>
+      <h1 class="section-title-white" style="margin-bottom: 1.25rem; max-width: 700px;">Du contenu qui attire, engage et convertit vos prospects</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6; margin-bottom: 2rem;">
+        Notre équipe éditoriale crée du contenu expert qui positionne votre marque comme LA référence dans votre secteur — et génère des leads 24h/24.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="/contact" class="btn-primary">Parler de votre projet →</a>
+        <a href="/blog" class="btn-secondary">Voir notre blog</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3.5rem;">
+        <div class="section-label" style="margin-bottom: 0.75rem;">Nos prestations</div>
+        <h2 class="section-title">Tout ce dont vous avez besoin pour votre contenu</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        {[
+          { icon: '📝', title: 'Articles de blog SEO', desc: "Articles longs (1 500 à 3 000 mots) optimisés pour le référencement naturel. Chaque article cible des requêtes à fort potentiel commercial." },
+          { icon: '📚', title: 'Guides et livres blancs', desc: "Guides PDF téléchargeables qui servent de lead magnets. Contenu premium qui justifie le partage d'un email." },
+          { icon: '📅', title: 'Calendrier éditorial', desc: "Planning de contenu 3 à 12 mois aligné sur vos objectifs SEO, les saisons et le parcours d'achat de vos prospects." },
+          { icon: '✉️', title: 'Newsletter', desc: "Newsletters hebdomadaires ou mensuelles qui fidélisent vos prospects et maintiennent votre visibilité." },
+          { icon: '🎯', title: 'Pages de conversion', desc: "Landing pages et pages de service optimisées pour convertir le trafic organique en leads qualifiés." },
+          { icon: '📊', title: 'Études de cas', desc: "Études de cas clients avec résultats chiffrés. La meilleure preuve sociale pour convaincre vos prospects." },
+        ].map(item => (
+          <div class="service-card">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">{item.icon}</div>
+            <h3 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.125rem; margin-bottom: 0.75rem;">{item.title}</h3>
+            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Construisons votre machine à contenu</h2>
+      <p>Échangeons 30 minutes sur votre stratégie de contenu et repartons avec un plan d'action concret.</p>
+      <a href="/contact" class="btn-outline-dark">Prendre rendez-vous</a>
+    </div>
+  </div>
+</BaseLayout>

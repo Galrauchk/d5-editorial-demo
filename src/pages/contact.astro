@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Stratègere",
+  "url": "https://d5-editorial-demo.netlify.app/contact",
+  "contactType": "customer support",
+  "telephone": "04 67 00 00 00",
+  "email": "bonjour@strategere.fr"
+};
+---
+
+<BaseLayout
+  title="Contact | Agence SEO Stratègere Montpellier"
+  description="Contactez Stratègere pour discuter de votre projet SEO. Réponse sous 24h. Basés à Montpellier, nous accompagnons des clients dans toute la France."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/" style="color: rgba(255,255,255,0.5);">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color: rgba(255,255,255,0.8);">Contact</span>
+      </nav>
+      <div class="section-label" style="margin-bottom: 0.75rem;">Parlons de votre projet</div>
+      <h1 class="section-title-white" style="margin-bottom: 1rem;">Prenons contact</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 560px; line-height: 1.6;">
+        Décrivez votre situation et vos objectifs. Nous revenons vers vous sous 24h avec une première analyse et une proposition adaptée.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: start;">
+        <!-- Form -->
+        <div class="contact-form">
+          <h2 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem;">Envoyez-nous un message</h2>
+          <p style="color: #6b7280; margin-bottom: 2rem; font-size: 0.9375rem;">Réponse garantie sous 24 heures ouvrées.</p>
+
+          <form onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:2rem;\'><div style=\'font-size:3rem;margin-bottom:1rem;\'>✓</div><h3 style=\'font-family:var(--font-serif);color:var(--navy);\'>Message envoyé !</h3><p style=\'color:#6b7280;\'>Nous vous répondons sous 24h.</p></div>'">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label" for="prenom">Prénom *</label>
+                <input type="text" id="prenom" class="form-input" placeholder="Marie" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="nom">Nom *</label>
+                <input type="text" id="nom" class="form-input" placeholder="Dupont" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email *</label>
+              <input type="email" id="email" class="form-input" placeholder="marie@entreprise.fr" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="telephone">Téléphone</label>
+              <input type="tel" id="telephone" class="form-input" placeholder="06 12 34 56 78" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="entreprise">Nom de l'entreprise</label>
+              <input type="text" id="entreprise" class="form-input" placeholder="Ma Belle Entreprise" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="service">Service souhaité</label>
+              <select id="service" class="form-select">
+                <option value="">Sélectionnez un service...</option>
+                <option>Référencement SEO</option>
+                <option>Content Marketing</option>
+                <option>Google Ads</option>
+                <option>Audit Digital</option>
+                <option>Formation SEO</option>
+                <option>Conseil Stratégique</option>
+                <option>Autre / Non défini</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="budget">Budget mensuel estimé</label>
+              <select id="budget" class="form-select">
+                <option value="">Non défini</option>
+                <option>Moins de 1 000€/mois</option>
+                <option>1 000€ à 2 500€/mois</option>
+                <option>2 500€ à 5 000€/mois</option>
+                <option>Plus de 5 000€/mois</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Votre projet *</label>
+              <textarea id="message" class="form-textarea" placeholder="Décrivez votre situation actuelle et vos objectifs. Plus vous êtes précis, plus notre réponse sera pertinente..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 0.875rem;">Envoyer le message →</button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <!-- Direct contact -->
+          <div style="background: var(--gradient-hero); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid rgba(0,229,255,0.2); margin-bottom: 1.5rem;">
+            <h3 style="font-family: var(--font-serif); color: #fff; font-size: 1.25rem; margin-bottom: 1.5rem;">Contact direct</h3>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.875rem;">
+                <div style="width: 2.5rem; height: 2.5rem; background: rgba(0,229,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem;">📞</div>
+                <div>
+                  <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.125rem;">Téléphone</div>
+                  <a href="tel:0467000000" style="color: #fff; font-weight: 600; font-size: 1.0625rem;">04 67 00 00 00</a>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.875rem;">
+                <div style="width: 2.5rem; height: 2.5rem; background: rgba(0,229,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem;">✉️</div>
+                <div>
+                  <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.125rem;">Email</div>
+                  <a href="mailto:bonjour@strategere.fr" style="color: #fff; font-weight: 600;">bonjour@strategere.fr</a>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.875rem;">
+                <div style="width: 2.5rem; height: 2.5rem; background: rgba(0,229,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem;">📍</div>
+                <div>
+                  <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.125rem;">Adresse</div>
+                  <span style="color: #fff; font-weight: 600;">15 Rue de la République<br />34000 Montpellier</span>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.875rem;">
+                <div style="width: 2.5rem; height: 2.5rem; background: rgba(0,229,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem;">🕐</div>
+                <div>
+                  <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.125rem;">Horaires</div>
+                  <span style="color: #fff; font-weight: 600;">Lun–Ven : 9h–18h</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Response time -->
+          <div style="background: #f9fafb; border-radius: var(--radius-lg); padding: 1.5rem; border: 1px solid #f0f0f0; margin-bottom: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">⚡</div>
+            <h4 style="font-family: var(--font-serif); color: var(--navy); margin-bottom: 0.5rem;">Réponse sous 24h</h4>
+            <p style="color: #6b7280; font-size: 0.875rem; line-height: 1.5; margin: 0;">Nous répondons à tous les messages sous 24 heures ouvrées. Pour les urgences, appelez directement.</p>
+          </div>
+
+          <!-- Audit gratuit -->
+          <div style="background: var(--gradient-cta); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+            <h4 style="font-family: var(--font-serif); color: var(--navy); margin-bottom: 0.5rem;">Ou commencez par un audit gratuit</h4>
+            <p style="color: rgba(10,15,30,0.7); font-size: 0.875rem; margin-bottom: 1rem;">Obtenez une analyse de votre site en 48h, sans engagement.</p>
+            <a href="/audit-gratuit" class="btn-outline-dark" style="display: block; text-align: center;">Demander l'audit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
