@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalLinks from '../components/LegalLinks.astro';
 ---
 
 <BaseLayout
@@ -31,7 +32,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <strong>SIRET :</strong> 123 456 789 00012<br />
             <strong>TVA intracommunautaire :</strong> FR12 123456789<br />
             <strong>Directrice de la publication :</strong> Marie Dubois<br />
-            <strong>Email :</strong> <a href="mailto:bonjour@strategere.fr" style="color: var(--blue);">bonjour@strategere.fr</a><br />
+            <strong>Email :</strong> <a href="/contact" style="color: var(--blue);">bonjour@strategere.fr</a><br />
             <strong>Téléphone :</strong> 04 67 00 00 00
           </p>
         </div>
@@ -65,7 +66,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li>Droit d'opposition</li>
           </ul>
           <p style="color: #374151; line-height: 1.75; margin-top: 1rem;">
-            Pour exercer ces droits, contactez notre DPO à : <a href="mailto:dpo@strategere.fr" style="color: var(--blue);">dpo@strategere.fr</a>
+            Pour exercer ces droits, contactez notre DPO à : <a href="/contact" style="color: var(--blue);">dpo@strategere.fr</a>
           </p>
         </div>
 
@@ -82,6 +83,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             En cas de litige, vous pouvez recourir à une procédure de médiation conventionnelle. Pour tout litige avec un professionnel : <a href="https://www.economie.gouv.fr/mediation-conso" target="_blank" rel="noopener" style="color: var(--blue);">Plateforme européenne de règlement en ligne des litiges</a>.
           </p>
         </div>
+        <LegalLinks includeMentions={false} />
       </div>
     </div>
   </section>
