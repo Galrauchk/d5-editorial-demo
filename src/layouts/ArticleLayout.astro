@@ -32,7 +32,7 @@ const {
   slug
 } = Astro.props;
 
-const siteUrl = 'https://d5-editorial-demo.netlify.app';
+const siteUrl = 'https://demo-editorial.webtrafic.fr';
 const articleUrl = `${siteUrl}/blog/${slug}`;
 
 const relatedArticles = articles.filter(a => relatedSlugs.includes(a.slug)).slice(0, 3);
