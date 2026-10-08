@@ -33,12 +33,12 @@ const navItems = [
 <header class="site-header">
   <!-- Topbar -->
   <div class="topbar">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="container topbar-content" style="display: flex; justify-content: space-between; align-items: center;">
       <div style="display: flex; align-items: center; gap: 1.5rem;">
         <span>📍 Montpellier, France</span>
         <span>📞 04 67 00 00 00</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
+      <div class="topbar-reassurance" style="align-items: center; gap: 1rem;">
         <span>+200 clients accompagnés</span>
         <span style="color: var(--cyan);">★ ★ ★ ★ ★ 4.9/5</span>
       </div>
@@ -57,7 +57,7 @@ const navItems = [
       </a>
 
       <!-- Nav Links -->
-      <ul style="display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0;" id="mainNav">
+      <ul style=" align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0;" id="mainNav" class="desktop-navigation">
         {navItems.map(item => (
           <li class={item.children ? 'nav-item' : ''} style="position: relative;">
             {item.children ? (
@@ -78,11 +78,35 @@ const navItems = [
         ))}
       </ul>
 
+      <details class="mobile-navigation">
+        <summary>Menu</summary>
+        <nav aria-label="Navigation mobile">
+          {navItems.map(item => (
+            <div>
+              <a href={item.href}>{item.label}</a>
+              {item.children?.map(child => <a class="mobile-subitem" href={child.href}>{child.label}</a>)}
+            </div>
+          ))}
+          <a href="/contact">Contact</a>
+          <a href="/audit-gratuit">Audit gratuit</a>
+        </nav>
+      </details>
+
       <!-- CTA -->
-      <div style="display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;">
+      <div class="desktop-actions" style="align-items: center; gap: 0.75rem; flex-shrink: 0;">
         <a href="/contact" class="btn-secondary" style="font-size: 0.8125rem; padding: 0.5rem 1rem;">Contact</a>
         <a href="/audit-gratuit" class="btn-primary" style="font-size: 0.8125rem; padding: 0.5rem 1rem;">Audit gratuit</a>
       </div>
     </div>
   </nav>
 </header>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-navigation');
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) {
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+    }
+  });
+</script>

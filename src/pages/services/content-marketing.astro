@@ -34,7 +34,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h2 class="section-title">Tout ce dont vous avez besoin pour votre contenu</h2>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem;">
         {[
           { icon: '📝', title: 'Articles de blog SEO', desc: "Articles longs (1 500 à 3 000 mots) optimisés pour le référencement naturel. Chaque article cible des requêtes à fort potentiel commercial." },
           { icon: '📚', title: 'Guides et livres blancs', desc: "Guides PDF téléchargeables qui servent de lead magnets. Contenu premium qui justifie le partage d'un email." },

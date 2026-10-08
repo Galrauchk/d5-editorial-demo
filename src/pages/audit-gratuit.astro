@@ -24,7 +24,7 @@ const schema = {
   <section style="background: var(--gradient-hero); padding: 5rem 0; position: relative; overflow: hidden;">
     <div style="position: absolute; top: -20%; right: -10%; width: 50%; height: 140%; background: radial-gradient(ellipse, rgba(0,229,255,0.08) 0%, transparent 70%); pointer-events: none;"></div>
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 480px; gap: 4rem; align-items: center;">
+      <div class="responsive-split" style="display: grid; --desktop-columns: 1fr 480px; gap: 4rem; align-items: center;">
         <div>
           <div class="section-label" style="margin-bottom: 1rem;">100% Gratuit — Sans engagement</div>
           <h1 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); color: #fff; line-height: 1.1; margin-bottom: 1.25rem;">
@@ -110,7 +110,7 @@ const schema = {
       <div style="text-align: center; margin-bottom: 3rem;">
         <p style="color: rgba(255,255,255,0.5); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Ils ont commencé par un audit gratuit</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem;">
         {[
           { quote: "L'audit gratuit nous a révélé 3 problèmes techniques critiques que nous avions depuis des mois. En les corrigeant, notre trafic a augmenté de 60% en 6 semaines.", author: "Julien M.", role: "Directeur e-commerce" },
           { quote: "Je ne m'attendais pas à recevoir un rapport aussi détaillé et personnalisé pour zéro euro. Ça a clairement démontré le niveau d'expertise de l'équipe.", author: "Céline R.", role: "Responsable marketing" },

@@ -41,7 +41,7 @@ const categories = [
   <!-- ===== HERO SECTION ===== -->
   <section class="hero-section" style="padding: 5rem 0 4rem;">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+      <div class="hero-grid">
         <div class="animate-fade-in-up">
           <div class="section-label" style="margin-bottom: 1rem;">Agence SEO & Content Marketing</div>
           <h1 style="font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 1.5rem;">
@@ -99,7 +99,7 @@ const categories = [
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem;">
         {recentArticles.map(article => (
           <ArticleCard {...article} />
         ))}
@@ -120,7 +120,7 @@ const categories = [
         <p style="color: #6b7280; font-size: 1.0625rem; margin-top: 1rem; line-height: 1.6;">Chaque service est piloté par des experts certifiés qui ne font qu'une seule chose : maximiser votre retour sur investissement digital.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem;">
         <a href="/services/seo" class="service-card" style="text-decoration: none;">
           <div class="service-icon">🔍</div>
           <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">Référencement SEO</h3>
@@ -177,7 +177,7 @@ const categories = [
         <a href="/cas-clients" class="btn-secondary">Tous les cas clients →</a>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1.5rem;">
         {caseStudies.map(cs => (
           <a href={`/cas-clients/${cs.slug}`} class="case-study-card" style="text-decoration: none;">
             <div style="aspect-ratio: 16/7; overflow: hidden;">
@@ -190,7 +190,7 @@ const categories = [
                 <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">{cs.duration}</span>
               </div>
               <h3 style="font-family: var(--font-serif); color: #fff; font-size: 1.25rem; margin-bottom: 1rem;">{cs.client}</h3>
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem;">
+              <div class="responsive-statistics" style="display: grid; --desktop-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem;">
                 {cs.results.map(r => (
                   <div class="case-metric">
                     <div class="case-metric-value">{r.metric}</div>
@@ -218,7 +218,7 @@ const categories = [
         <p style="color: #6b7280; margin-top: 1rem; font-size: 1.0625rem;">Des ressources pratiques créées par nos experts pour vous aider à mettre en place votre stratégie SEO.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem;">
         <div class="resource-card">
           <div style="background: linear-gradient(135deg, #0a0f1e, #1a2237); padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 180px;">
             <div style="font-size: 3rem; margin-bottom: 0.75rem;">📋</div>

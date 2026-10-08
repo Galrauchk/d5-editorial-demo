@@ -88,7 +88,7 @@ const resources = [
   <!-- Stats -->
   <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+      <div class="responsive-statistics" style="display: grid; --desktop-columns: repeat(3, 1fr);">
         <div class="stat-item"><span class="stat-number">12 000+</span><div class="stat-label">Téléchargements</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">6</span><div class="stat-label">Ressources disponibles</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">100%</span><div class="stat-label">Gratuit</div></div>
@@ -99,7 +99,7 @@ const resources = [
   <!-- Resources Grid -->
   <section style="padding: 5rem 0;">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.5rem;">
         {resources.map(r => (
           <div class="resource-card">
             <div style={`background: ${r.color}; padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; text-align: center;`}>

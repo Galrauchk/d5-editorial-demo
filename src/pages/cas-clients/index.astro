@@ -25,7 +25,7 @@ import { caseStudies } from '../../data/caseStudies';
   <!-- Global stats -->
   <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+      <div class="responsive-statistics" style="display: grid; --desktop-columns: repeat(4, 1fr);">
         <div class="stat-item"><span class="stat-number">+200</span><div class="stat-label">Clients accompagnés</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">+340%</span><div class="stat-label">Trafic moyen</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">4.9★</span><div class="stat-label">Satisfaction</div></div>
@@ -37,7 +37,7 @@ import { caseStudies } from '../../data/caseStudies';
   <!-- Case studies grid -->
   <section style="padding: 5rem 0; background: var(--navy);">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 2rem;">
         {caseStudies.map(cs => (
           <a href={`/cas-clients/${cs.slug}`} class="case-study-card" style="text-decoration: none;">
             <div style="aspect-ratio: 16/8; overflow: hidden;">
@@ -53,7 +53,7 @@ import { caseStudies } from '../../data/caseStudies';
               </div>
               <h2 style="font-family: var(--font-serif); color: #fff; font-size: 1.5rem; margin-bottom: 0.75rem;">{cs.client}</h2>
               <p style="color: rgba(255,255,255,0.6); font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">{cs.challenge.substring(0, 150)}...</p>
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem;">
+              <div class="responsive-statistics" style="display: grid; --desktop-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem;">
                 {cs.results.map(r => (
                   <div class="case-metric">
                     <div class="case-metric-value">{r.metric}</div>
@@ -73,7 +73,7 @@ import { caseStudies } from '../../data/caseStudies';
   <section style="padding: 5rem 0;">
     <div class="container">
       <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--navy); text-align: center; margin-bottom: 3rem;">Ce que disent nos clients</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; background: var(--navy); padding: 3rem; border-radius: var(--radius-lg);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; background: var(--navy); padding: 3rem; border-radius: var(--radius-lg);">
         {caseStudies.map(cs => (
           <div class="testimonial-card">
             <p class="testimonial-text">"{cs.testimonial.quote}"</p>

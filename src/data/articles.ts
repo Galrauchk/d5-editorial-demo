@@ -134,7 +134,7 @@ export const articles: Article[] = [
     authorSlug: 'marie-dubois',
     date: '2026-02-28',
     readTime: 12,
-    image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07d?w=800&q=85',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85',
     tags: ['audit SEO', 'technique SEO', 'Screaming Frog', 'Search Console'],
     relatedSlugs: ['guide-seo-local-2026', 'core-web-vitals-guide'],
     content: `<h2 id="introduction">Pourquoi un audit SEO est indispensable</h2>

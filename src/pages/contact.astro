@@ -36,14 +36,14 @@ const schema = {
   <!-- Contact Section -->
   <section style="padding: 5rem 0;">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: start;">
+      <div class="responsive-split" style="display: grid; --desktop-columns: 1fr 400px; gap: 4rem; align-items: start;">
         <!-- Form -->
         <div class="contact-form">
           <h2 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.5rem; margin-bottom: 0.5rem;">Envoyez-nous un message</h2>
           <p style="color: #6b7280; margin-bottom: 2rem; font-size: 0.9375rem;">Réponse garantie sous 24 heures ouvrées.</p>
 
           <form onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:2rem;\'><div style=\'font-size:3rem;margin-bottom:1rem;\'>✓</div><h3 style=\'font-family:var(--font-serif);color:var(--navy);\'>Message envoyé !</h3><p style=\'color:#6b7280;\'>Nous vous répondons sous 24h.</p></div>'">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+            <div class="responsive-split" style="display: grid; --desktop-columns: 1fr 1fr; gap: 1.25rem;">
               <div class="form-group">
                 <label class="form-label" for="prenom">Prénom *</label>
                 <input type="text" id="prenom" class="form-input" placeholder="Marie" required />

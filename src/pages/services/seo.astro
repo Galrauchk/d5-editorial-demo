@@ -48,7 +48,7 @@ const faq = [
   <!-- Stats -->
   <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+      <div class="responsive-statistics" style="display: grid; --desktop-columns: repeat(4, 1fr);">
         <div class="stat-item">
           <span class="stat-number">+340%</span>
           <div class="stat-label">Trafic organique moyen</div>
@@ -77,7 +77,7 @@ const faq = [
         <h2 class="section-title">Le SEO selon Stratègere : une méthode en 4 piliers</h2>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 2rem;">
         <div style="padding: 2rem; border: 1px solid #f0f0f0; border-radius: var(--radius-lg);">
           <div style="width: 3rem; height: 3rem; background: rgba(0,229,255,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem;">🔬</div>
           <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.75rem;">1. Audit & stratégie</h3>
