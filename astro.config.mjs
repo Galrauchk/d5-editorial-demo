@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://d5-editorial-demo.netlify.app',
+  site: 'https://demo-editorial.webtrafic.fr',
   integrations: [
     react(),
     sitemap({
