@@ -154,7 +154,7 @@ const badgeClass = categoryColors[categorySlug] || 'badge-seo';
   <!-- Article Content -->
   <section style="padding: 4rem 0;">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 280px; gap: 4rem; align-items: start;" class="article-grid">
+      <div style="display: grid; --desktop-columns: 1fr 280px; gap: 4rem; align-items: start;" class="responsive-split article-grid">
 
         <!-- Main Content -->
         <article>
@@ -223,7 +223,7 @@ const badgeClass = categoryColors[categorySlug] || 'badge-seo';
     <section style="padding: 4rem 0; background: #f9fafb; border-top: 1px solid #f0f0f0;">
       <div class="container">
         <h2 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--navy); margin-bottom: 2rem;">Articles liés</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem;">
           {relatedArticles.map(article => (
             <a href={`/blog/${article.slug}`} class="card-article" style="text-decoration: none;">
               <div class="card-article-image">

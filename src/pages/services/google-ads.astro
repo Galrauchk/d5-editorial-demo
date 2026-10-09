@@ -29,7 +29,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+      <div class="responsive-statistics" style="display: grid; --desktop-columns: repeat(4, 1fr);">
         <div class="stat-item"><span class="stat-number">5.8x</span><div class="stat-label">ROAS moyen</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">2M€+</span><div class="stat-label">Budget géré/an</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">-35%</span><div class="stat-label">Coût par acquisition</div></div>
@@ -45,7 +45,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h2 class="section-title">Tous les types de campagnes Google Ads</h2>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem;">
         {[
           { icon: '🔍', title: 'Search (Réseau de recherche)', desc: "Campagnes Search structurées par intention : brand, generic, concurrents. Annonces RSA optimisées avec Smart Bidding." },
           { icon: '⚡', title: 'Performance Max', desc: "Campagnes PMax avec asset groups optimisés et signaux d'audience first-party pour une diffusion maximale sur tous les réseaux Google." },

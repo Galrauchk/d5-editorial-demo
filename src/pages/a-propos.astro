@@ -26,7 +26,7 @@ import { teamMembers } from '../data/team';
   <!-- Stats -->
   <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr);">
+      <div class="responsive-statistics" style="display: grid; --desktop-columns: repeat(4, 1fr);">
         <div class="stat-item"><span class="stat-number">2012</span><div class="stat-label">Année de fondation</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">+200</span><div class="stat-label">Clients accompagnés</div></div>
         <div class="stat-item" style="border-left: 1px solid rgba(255,255,255,0.08);"><span class="stat-number">4</span><div class="stat-label">Experts dans l'équipe</div></div>
@@ -38,7 +38,7 @@ import { teamMembers } from '../data/team';
   <!-- Story -->
   <section style="padding: 5rem 0;">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-bottom: 5rem;">
+      <div class="responsive-split" style="display: grid; --desktop-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-bottom: 5rem;">
         <div>
           <div class="section-label" style="margin-bottom: 0.75rem;">Notre histoire</div>
           <h2 class="section-title" style="margin-bottom: 1.5rem;">De Google France à l'entrepreneuriat</h2>
@@ -80,7 +80,7 @@ import { teamMembers } from '../data/team';
         <p style="color: #6b7280; margin-top: 1rem; font-size: 1.0625rem;">Chaque membre de notre équipe est un praticien. Ils font du SEO au quotidien, pas seulement en réunion client.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1.5rem;">
         {teamMembers.map(member => (
           <div class="team-card">
             <img src={member.image} alt={member.name} width="80" height="80" class="team-avatar" />

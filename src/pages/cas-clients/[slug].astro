@@ -55,7 +55,7 @@ const schema = {
   <!-- Results -->
   <section style="background: var(--navy-light); border-bottom: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
-      <div style={`display: grid; grid-template-columns: repeat(${cs.results.length}, 1fr);`}>
+      <div class="responsive-statistics" style={`display: grid; --desktop-columns: repeat(${cs.results.length}, 1fr);`}>
         {cs.results.map((r, i) => (
           <div class="stat-item" style={i > 0 ? 'border-left: 1px solid rgba(255,255,255,0.08);' : ''}>
             <span class="stat-number">{r.metric}</span>
@@ -70,7 +70,7 @@ const schema = {
   <!-- Content -->
   <section style="padding: 5rem 0;">
     <div class="container" style="max-width: 900px;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;">
+      <div class="responsive-split" style="display: grid; --desktop-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;">
         <div>
           <h2 style="font-family: var(--font-serif); color: var(--navy); font-size: 1.5rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 3px solid var(--cyan);">Le défi</h2>
           <p style="color: #374151; line-height: 1.75; font-size: 1.0rem;">{cs.challenge}</p>

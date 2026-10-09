@@ -61,7 +61,7 @@ const schema = {
         {sortedLetters.map(letter => (
           <div id={`lettre-${letter}`}>
             <div class="glossary-letter-anchor">{letter}</div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1rem;">
               {termsByLetter[letter].map(term => (
                 <a href={`/glossaire/${term.slug}`} class="glossary-term-card" style="text-decoration: none;">
                   <div class="glossary-term-name">{term.term}</div>

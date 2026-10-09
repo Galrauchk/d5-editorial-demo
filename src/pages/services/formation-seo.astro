@@ -31,7 +31,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h2 class="section-title">Formations disponibles</h2>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem;">
         {[
           { title: 'SEO Fondamentaux', duration: '1 jour (7h)', level: 'Débutant', price: '490€ HT/pers.', desc: 'Comprendre le SEO, les bases techniques, les mots-clés et la création de contenu optimisé. Idéal pour les non-techniciens.' },
           { title: 'SEO Avancé & Technique', duration: '2 jours (14h)', level: 'Intermédiaire', price: '890€ HT/pers.', desc: 'Audit technique, Core Web Vitals, structured data, netlinking avancé et analyse avec Search Console.' },
